@@ -3,7 +3,7 @@ import csv
 import psycopg2
 
 # %%
-path = 'vgsales.csv'
+path = '.csv'
 
 username = 'sashamalakhatka'
 password = '111'
@@ -33,8 +33,7 @@ with conn:
     with open(path, 'r') as inf:
         reader = csv.DictReader(inf)
         for idx, row in enumerate(reader):
-            if row['Year'] != 'N/A':
-                values = (row['Name'], row['Platform'], row['Genre'], row['Year'])
-                cur.execute(query, values)
+            values = (row['Rank'], row['Team/NOC'], row['Gold'], row['Silver'], row['Bronze'])
+            cur.execute(query, values)
 
     conn.commit()
